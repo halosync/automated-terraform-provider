@@ -1,18 +1,18 @@
-HOSTNAME=logicmonitor.com
+HOSTNAME=halosync.io
 NAMESPACE=com
-NAME=logicmonitor
+NAME=jamf
 BINARY=terraform-provider-${NAME}
 VERSION=0.2
-OS_ARCH=darwin_amd64
+OS_ARCH=darwin_arm64
 
 default: install
 
 clean:
 	rm -Rf data_profile/
-	rm -Rf logicmonitor/*
+	rm -Rf jamf/*
 
 build:  clean
-	swagger generate client -f ./spec_files/current.json --template-dir templates -C config.yml > swagrun.log
+	swagger generate client -f ./spec_files/current.yml --template-dir templates -C config.yml > swagrun.log
 	go build -o ${BINARY}
 
 install: build
