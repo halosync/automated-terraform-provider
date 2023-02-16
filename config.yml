@@ -4,17 +4,17 @@ layout:
       source: asset:clientFacade
       target: "{{ joinFilePath .Target .ClientPackage }}"
       file_name: "{{ .Name }}_client.go"
-    - name: lmmain 
+    - name: lmmain
       source: "main.gtpl"
       target: "{{ joinFilePath .Target }}"
       file_name: "main.go"
-    - name: provider 
+    - name: provider
       source: "provider.gtpl"
-      target: "{{ joinFilePath .Target }}/logicmonitor"
+      target: "{{ joinFilePath .Target }}/jamf"
       file_name: "provider.go"
-    - name: utils 
+    - name: utils
       source: "utils.gtpl"
-      target: "{{ joinFilePath .Target }}/logicmonitor/utils"
+      target: "{{ joinFilePath .Target }}/jamf/utils"
       file_name: "helper_functions.go"
     - name: datadump
       source: "datadump.gtpl"
@@ -26,8 +26,8 @@ layout:
       target: "{{ joinFilePath .Target .ModelPackage }}"
       file_name: "{{ (snakize (pascalize .Name)) }}.go"
     - name: schemata
-      source: "schemata.gtpl" 
-      target: "{{ joinFilePath .Target }}/logicmonitor/schemata"
+      source: "schemata.gtpl"
+      target: "{{ joinFilePath .Target }}/jamf/schemata"
       file_name: "{{ camelize .Name }}_schema.go"
     - name: datadump
       source: "datadump.gtpl"
@@ -51,9 +51,9 @@ layout:
       source: asset:clientClient
       target: "{{ joinFilePath .Target .ClientPackage .Name }}"
       file_name: "{{ (snakize (pascalize .Name)) }}_client.go"
-    - name: resources 
-      source: "resources.gtpl" 
-      target: "{{ joinFilePath .Target }}/logicmonitor/resources"
+    - name: resources
+      source: "resources.gtpl"
+      target: "{{ joinFilePath .Target }}/jamf/resources"
       file_name: "{{ camelize .Name }}_resource.go"
     - name: datadump
       source: "datadump.gtpl"
